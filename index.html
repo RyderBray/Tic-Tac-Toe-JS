@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css"> 
+        <title>Tic-Tac-Toe</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="gameArea"> 
+                <div class="gameInfo">
+                    <p id="activePlayer">Current player: </p>
+                </div>
+                <div class="gameBoard">
+                    <table> 
+                        <tr>
+                            <td><button onclick="makeMove()" class="gameButton" id="a1">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="a2">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="a3">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="makeMove()" class="gameButton" id="b1">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="b2">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="b3">-</button></td>
+                        </tr>
+                        <tr>
+                            <td><button onclick="makeMove()" class="gameButton" id="c1">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="c2">-</button></td>
+                            <td><button onclick="makeMove()" class="gameButton" id="c3">-</button></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="gameButtons">
+                    <button onclick="resetBoard()">Reset Board</button>
+                    <!--<button onclick="resetWins()">Reset Wins</button>-->
+                </div>
+            </div>
+        </div>
+        <script src="ticTacToe.js"></script>
+    </body>
+</html>
