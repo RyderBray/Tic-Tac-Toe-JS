@@ -1,7 +1,10 @@
+* {
+    font-family: 'Quicksand', sans-serif;
+}
+
 body {
     margin: 0 auto;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
     box-sizing: border-box;
 }
 
@@ -20,12 +23,22 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-bottom: 50px;
+    flex-direction: column;
+    margin-bottom: 45px;
 }
 
 .gameInfo p{
     color: white;
     font-size: 1.5em;
+}
+
+#activePlayer {
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+#winMessage {
+    margin: 0;
 }
 
 table {
@@ -47,9 +60,10 @@ button {
     background-color: transparent;
     font-size: 150px;
     text-shadow: 0 0 10px #04d9ff;
-    font-weight: 600;
+    font-weight: 700;
     color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 
 button:hover {
@@ -81,3 +95,50 @@ button:hover {
     cursor: pointer;
     box-shadow: 0 0 15px #48abe0;
 }
+
+@media only screen and (max-width: 480px) and (min-width: 325px) {
+    .gameInfo p {
+      font-size: 1em;
+    }
+    
+    button {
+      font-size: 100px;
+    }
+    
+    .gameButtons button {
+      font-size: 20px;
+    }
+
+    table {
+        border: white solid 1px;
+        border-collapse: collapse;
+        margin: auto;
+    }
+
+    button {
+        display: block;
+        width: 100px;
+        height: 100px;
+        padding: 0;
+        border: white solid 2px;
+        background-color: transparent;
+        font-size: 75px;
+        text-shadow: 0 0 10px #04d9ff;
+        font-weight: 700;
+        color: white;
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+    .gameButtons button {
+        background-color: #04d9ff;
+        border: none;
+        border-radius: 5px;
+        width: 150px;
+        height: 50px;
+        font-size: 1em;
+        color:#4e085f;
+        box-shadow: 0 0 10px #48abe0;
+        margin: 15px;
+    }
+  }

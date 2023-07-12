@@ -3,12 +3,16 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css"> 
         <title>Tic-Tac-Toe</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap" rel="stylesheet">        
     </head>
     <body>
         <div class="container">
             <div class="gameArea"> 
                 <div class="gameInfo">
                     <p id="activePlayer">Current player: </p>
+                    <p id="winMessage"></p>
                 </div>
                 <div class="gameBoard">
                     <table> 
@@ -31,7 +35,6 @@
                 </div>
                 <div class="gameButtons">
                     <button onclick="resetBoard()">Reset Board</button>
-                    <!--<button onclick="resetWins()">Reset Wins</button>-->
                 </div>
             </div>
         </div>

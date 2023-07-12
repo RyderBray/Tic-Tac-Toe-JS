@@ -1,5 +1,6 @@
 const boardData = document.querySelectorAll(".gameButton");
 const activePlayerDisplay = document.getElementById("activePlayer")
+const winMessageDisplay = document.getElementById("winMessage")
 const moveSound = new Audio("sounds/moveSound.mp3");
 const winSound = new Audio("sounds/winSound.wav");
 const playerOneSymbol = "X";
@@ -59,6 +60,12 @@ function makeMove() {
     winner = checkWinner(); //Checks if there was a winner on the made move
     if (winner !== null) {
         winSound.play();
+        if (winner === "playerOne wins") {
+          winMessageDisplay.textContent = "Player one wins!"          
+        }
+        else if (winner === "playerTwo wins") {
+          winMessageDisplay.textContent = "Player two wins!"
+        }
     }
 
 }
@@ -119,10 +126,7 @@ function resetBoard() { //Resets game board and used moves
     });
     usedMoves = [];
     winner = null;
+    winMessageDisplay.textContent = "";
     moveSound.currentTime = 0;
     moveSound.play();
-}
-
-function resetWins() { //Resets player win counters that will be added later
-    console.log("Wins reset");
 }
