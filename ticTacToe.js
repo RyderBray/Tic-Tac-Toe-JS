@@ -1,10 +1,15 @@
 const boardData = document.querySelectorAll(".gameButton");
 const activePlayerDisplay = document.getElementById("activePlayer")
 const winMessageDisplay = document.getElementById("winMessage")
+const setPlayerName = document.getElementById("setPlayerName")
 const moveSound = new Audio("sounds/moveSound.mp3");
 const winSound = new Audio("sounds/winSound.wav");
 const playerOneSymbol = "X";
 const playerTwoSymbol = "O";
+let playerOneNamed = false;
+let playerTwoNamed = false;
+let playerOneName = null;
+let playerTwoName = null;
 let activePlayer = "playerTwo";
 let usedMoves = [];
 let winner = null;
@@ -22,13 +27,33 @@ function playerTurn() { //Function for toggling between players
 }
 
 function updatePlayerDisplay() { //Updates current player display
-    if (activePlayer === "playerOne") {
+      if (activePlayer === "playerOne") {
         activePlayerDisplay.textContent = "Current player: Player one";
-    }
-    else {
+      }
+      else {
         activePlayerDisplay.textContent = "Current player: Player two";
-    }
+      }
+
+      if (playerOneNamed === true && activePlayer === "playerOne") {
+        activePlayerDisplay.textContent = `Current player: ${playerOneName}`;
+      }
+      else if (playerTwoNamed === true && activePlayer === "playerTwo") {
+        activePlayerDisplay.textContent = `Current player: ${playerTwoName}`;
+      }
 }
+
+setPlayerName.addEventListener("click", function() { //Prompts user for names, checks if input is null
+  playerOneName = prompt("Enter a name for player one:");
+  playerTwoName = prompt("Enter a name for player two:");
+
+  if (playerOneName !== null && playerOneName !== "") { //No empty player names
+    playerOneNamed = true;
+  } 
+  
+  if (playerTwoName !== null && playerTwoName !== "") {
+    playerTwoNamed = true;
+  }
+});
 
 function makeMove() {
     if (winner !== null) {
@@ -60,14 +85,27 @@ function makeMove() {
     winner = checkWinner(); //Checks if there was a winner on the made move
     if (winner !== null) {
         winSound.play();
-        if (winner === "playerOne wins") {
-          winMessageDisplay.textContent = "Player one wins!"          
+
+        if (winner === "playerOne wins") { //Updates display for winner (no names)
+          winMessageDisplay.textContent = "Player one wins!";
         }
         else if (winner === "playerTwo wins") {
-          winMessageDisplay.textContent = "Player two wins!"
+          winMessageDisplay.textContent = "Player two wins!";
+        }
+        else if (winner === "draw") {
+          winMessageDisplay.textContent = "It's a draw!";
+        }
+
+        if (winner === "playerOne wins" && playerOneNamed === true) { //Updates display for winner (names)
+          winMessageDisplay.textContent = `${playerOneName} wins!`;          
+        }
+        else if (winner === "playerTwo wins" && playerTwoNamed === true) {
+          winMessageDisplay.textContent = `${playerTwoName} wins!`;
+        }
+        else if (winner === "draw") {
+          winMessageDisplay.textContent = "It's a draw!";
         }
     }
-
 }
 
 function checkWinner() { //Checks for winner
@@ -115,6 +153,10 @@ function checkWinner() { //Checks for winner
       else if (document.getElementById('b2').innerHTML === playerTwoSymbol) {
         winningPlayer = "playerTwo wins";
       }
+    }
+
+    if (usedMoves.length === 9 && winningPlayer === null) { //Checks for draw
+      winningPlayer = "draw"
     }
 
     return winningPlayer;

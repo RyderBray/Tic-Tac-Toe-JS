@@ -96,6 +96,22 @@ button:hover {
     box-shadow: 0 0 15px #48abe0;
 }
 
+.playerNameSet {
+    width: auto;
+    background-color: #4e085f;
+}
+
+p {
+    color: rgba(255, 255, 255, 70%);
+    text-align: center;
+    width: auto;
+}
+
+p:hover {
+    cursor: pointer;
+    text-decoration: underline;
+}
+
 @media only screen and (max-width: 480px) and (min-width: 325px) {
     .gameInfo p {
       font-size: 1em;
